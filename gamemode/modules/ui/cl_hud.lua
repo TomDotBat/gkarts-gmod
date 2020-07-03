@@ -1,5 +1,5 @@
 
-print("ASFDASD GAY")
+-- print("ASFDASD GAY")
 
 local colors = GM.Colors
 

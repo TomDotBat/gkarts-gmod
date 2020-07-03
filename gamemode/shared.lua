@@ -8,6 +8,7 @@ function GM:Initialize()
     print("[G-Karts] Loading...")
     print("[G-Karts] GKarts is property of Magma Networks(Tom.Bat and NoSharp)")
     GKarts = {}
+    team.SetUp(1, "drivers", Color(255,255,255))
     self:LoadDirectory("gkarts/gamemode/modules")
 end
 
