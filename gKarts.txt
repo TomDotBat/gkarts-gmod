@@ -1,7 +1,7 @@
 "gkarts"
 {
 	"base"		"base"
-	"title"		"gKarts"
+	"title"		"gkarts"
 	"maps"		"^gk_"
 	"menusystem"	"1"
 }
