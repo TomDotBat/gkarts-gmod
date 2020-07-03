@@ -1,0 +1,7 @@
+"gkarts"
+{
+	"base"		"base"
+	"title"		"gKarts"
+	"maps"		"^gk_"
+	"menusystem"	"1"
+}
