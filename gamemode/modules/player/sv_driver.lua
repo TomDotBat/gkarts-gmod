@@ -4,6 +4,6 @@ function _P:SetScore(sco)
     self:SetNWInt("score", sco)
 end
 
-function _P:SetCar(car)
-    self:SetNWInt("car", car)
+function _P:SetRank(rank)
+    self:SetNWInt("rank", rank)
 end

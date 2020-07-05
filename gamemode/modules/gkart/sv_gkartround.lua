@@ -12,6 +12,5 @@ end
 --[[
     Called to stop the current round and put everyone into "spectate mode"
 ]]
---
 function GM:StopRound()
 end
