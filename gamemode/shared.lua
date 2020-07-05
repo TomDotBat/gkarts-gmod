@@ -3,13 +3,14 @@ GM.Author = "MagmaPlex Team - Tom.bat & NoSharp"
 GM.Email = "N/A"
 GM.Website = "http://magmanet.co/"
 
--- GM:LoadDirectory("gkarts/gamemode/modules/*")
 function GM:Initialize()
     print("[G-Karts] Loading...")
-    print("[G-Karts] GKarts is property of Magma Networks(Tom.Bat and NoSharp)")
+    print("[G-Karts] GKarts is property of Magma Networks (Tom.Bat and NoSharp)")
+
     GKarts = {}
-    team.SetUp(1, "drivers", Color(255,255,255))
-    self:LoadDirectory("gkarts/gamemode/modules")
+    team.SetUp(1, "drivers", Color(255, 255, 255))
+
+    self:LoadDirectory(self.FolderName .. "/gamemode/modules")
 end
 
 function GM:LoadDirectory(dir)
@@ -40,4 +41,4 @@ function GM:LoadDirectory(dir)
     end
 end
 
-GM:LoadDirectory("gkarts/gamemode/modules")
+GM:LoadDirectory(GM.FolderName .. "/gamemode/modules")
