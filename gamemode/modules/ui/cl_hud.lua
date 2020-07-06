@@ -49,8 +49,8 @@ function GM:DrawTimer(x, y, w, h)
     local textY = y + h / 2 - (th + lh + bh) / 2
 
     draw.SimpleText(timeSpent, "gKarts.Timer.Primary", textX, textY, colors.PrimaryText, TEXT_ALIGN_RIGHT)
-    draw.SimpleText("LAP: " ..lapTime, "gKarts.Timer.Secondary", textX, textY + th, colors.PrimaryText, TEXT_ALIGN_RIGHT)
-    draw.SimpleText("BEST: " ..bestTime, "gKarts.Timer.Secondary", textX, textY + th + lh, colors.PrimaryText, TEXT_ALIGN_RIGHT)
+    draw.SimpleText("LAP: " .. lapTime, "gKarts.Timer.Secondary", textX, textY + th, colors.PrimaryText, TEXT_ALIGN_RIGHT)
+    draw.SimpleText("BEST: " .. bestTime, "gKarts.Timer.Secondary", textX, textY + th + lh, colors.PrimaryText, TEXT_ALIGN_RIGHT)
 end
 
 function GM:HUDPaint()
