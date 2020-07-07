@@ -34,5 +34,3 @@ function GM:ScoreboardShow()
 end
 
 function GM:ScoreboardHide() end
-
-GM:ScoreboardShow()
