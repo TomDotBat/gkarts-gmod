@@ -1,9 +1,9 @@
 
 local colors = GM.Colors
 
-GM:DefineFont("Position.No", 140, true)
-GM:DefineFont("Position.Suffix", 50, true)
-GM:DefineFont("Position.Lap", 54, true)
+GM:DefineScaledFont("Position.No", 140, true)
+GM:DefineScaledFont("Position.Suffix", 50, true)
+GM:DefineScaledFont("Position.Lap", 54, true)
 
 function GM:DrawPosition(x, y, w, h)
     draw.RoundedBox(self:ScreenScale(20), x, y, w, h, colors.PrimaryBackground)
@@ -24,8 +24,8 @@ GM:GetImgur("TUpLWE3", function(mat)
     logoMat = mat
 end)
 
-GM:DefineFont("Timer.Primary", 54, true)
-GM:DefineFont("Timer.Secondary", 32, true)
+GM:DefineScaledFont("Timer.Primary", 54, true)
+GM:DefineScaledFont("Timer.Secondary", 32, true)
 
 function GM:DrawTimer(x, y, w, h)
     draw.RoundedBoxEx(self:ScreenScale(20), x, y, w, h, colors.PrimaryBackground, false, true, false, true)
