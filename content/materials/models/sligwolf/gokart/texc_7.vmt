@@ -1,0 +1,17 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" 	"models/sligwolf/gokart/gokart"
+	"$blendtintbybasealpha" 1
+	"$blendtintcoloroverbase" "0.05"
+	"$model" 1
+	
+	"Proxies"
+	{
+		"TextureScroll"
+		{
+			"texturescrollvar" "$basetexturetransform"
+			"texturescrollrate" 0.45
+			"texturescrollangle" 0
+		}
+	}
+}
