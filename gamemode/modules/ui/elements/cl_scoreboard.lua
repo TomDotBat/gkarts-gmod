@@ -43,7 +43,7 @@ function PANEL:PerformLayout(w, h)
     end
 end
 
-GM:DefineFont("Scoreboard.Hint", 24)
+GM:DefineScaledFont("Scoreboard.Hint", 24)
 
 function PANEL:Paint(w, h)
     if CurTime() > self.CreateTime + 3 then return end
@@ -57,7 +57,3 @@ function PANEL:Paint(w, h)
 end
 
 vgui.Register("gKarts.Scoreboard", PANEL, "EditablePanel")
-
-if IsValid(GAMEMODE.Scoreboard) then
-    GAMEMODE.Scoreboard:Remove()
-end
