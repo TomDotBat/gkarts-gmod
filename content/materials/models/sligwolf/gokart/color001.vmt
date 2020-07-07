@@ -1,0 +1,9 @@
+"VertexLitGeneric"
+{
+	"$baseTexture" 	"\models\sligwolf\gokart\color001"
+	"$envmap" "env_cubemap"	
+	"$blendtintbybasealpha" 1
+	"$blendtintcoloroverbase" "0.05"
+	"$envmapmask" "models\sligwolf\gokart\color000_mask"
+	"$envmapcontrast" 1
+}
