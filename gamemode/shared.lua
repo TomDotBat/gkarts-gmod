@@ -6,11 +6,6 @@ GM.Website = "http://magmanet.co/"
 function GM:LoadDirectory(dir)
     local fil, fol = file.Find(dir .. "/*", "LUA")
 
-    for k, v in pairs(fol) do
-        self:LoadDirectory(dir .. "/" .. v)
-        print("[G-Karts] Loaded folder: \"" .. dir .. "/" .. v .. "\"")
-    end
-
     for k, v in ipairs(fil) do
         local dirs = dir .. "/" .. v
 
@@ -28,6 +23,11 @@ function GM:LoadDirectory(dir)
                 include(dirs)
             end
         end
+    end
+
+    for k, v in pairs(fol) do
+        self:LoadDirectory(dir .. "/" .. v)
+        print("[G-Karts] Loaded folder: \"" .. dir .. "/" .. v .. "\"")
     end
 end
 
