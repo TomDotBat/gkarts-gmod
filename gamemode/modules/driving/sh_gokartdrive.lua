@@ -114,12 +114,12 @@ drive.Register( "gokart_drive",
 	-- You should try to only change mv.
 	--
 	Move = function( self, mv )
-
+        -- print(self)
 		--
 		-- Set up a speed, go faster if shift is held down
 		--
-		local speed = 0.01 * FrameTime()
-		if ( mv:KeyDown( IN_SPEED ) ) then speed = 0.005 * FrameTime() end
+		local speed = 0.001
+		if ( mv:KeyDown( IN_SPEED ) ) then speed = 0.005 end
 
 		--
 		-- Get information from the movedata
@@ -131,8 +131,8 @@ drive.Register( "gokart_drive",
 		-- Cancel out the roll
 		ang.roll = 0
         ang.pitch = 0
-		vel = vel + ang:Forward()	* mv:GetForwardSpeed()	* speed
-		vel = vel + ang:Right()		* mv:GetSideSpeed()		* speed
+		vel = vel + ang:Forward()	* (mv:GetForwardSpeed()/25)	* speed
+		vel = vel + ang:Right()		* (mv:GetSideSpeed()/15)		* speed
 		-- vel = vel + ang:Up()		* mv:GetUpSpeed()		* speed
 
 		--
@@ -141,12 +141,14 @@ drive.Register( "gokart_drive",
 		-- more resistance so we slow down more.
 		--
 		if ( math.abs( mv:GetForwardSpeed() ) + math.abs( mv:GetSideSpeed() ) + math.abs( mv:GetUpSpeed() ) < 0.1 ) then
-			vel = vel * 0.90
+			vel = vel * 0.55
 		else
-			vel = vel * 0.99
+			-- vel = vel * 0.15
 		end
-
-		--
+        -- if not self:IsOnGround() then
+        --     vel.z = Lerp(0.1, vel.z, 50)
+        -- end
+		-- --
 		-- Add the velocity to the position (this is the movement)
 		--
 		pos = pos + vel
@@ -188,3 +190,4 @@ drive.Register( "gokart_drive",
 	end
 
 }, "drive_base" )
+-- print("local bb = b['\115\116\114\105\110\103']")
