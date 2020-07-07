@@ -10,8 +10,11 @@ function GM:DrawPosition(x, y, w, h)
 
     local px = x + self:ScreenScale(20)
 
-    local pw, ph = draw.SimpleText("7", "gKarts.Position.No", px, y + h * .54, colors.PrimaryText, TEXT_ALIGN_LEFT, TEXT_ALIGN_CENTER)
-    draw.SimpleText("TH", "gKarts.Position.Suffix", px + pw, y + h * .54 + ph * .348, colors.PrimaryText, TEXT_ALIGN_LEFT, TEXT_ALIGN_BOTTOM)
+    local position = 3
+    local positionCol = GAMEMODE.Colors.Positions[position] or GAMEMODE.Colors.DefaultPosition
+
+    local pw, ph = draw.SimpleText(position, "gKarts.Position.No", px, y + h * .54, positionCol, TEXT_ALIGN_LEFT, TEXT_ALIGN_CENTER)
+    draw.SimpleText(self:GetSuffix(position), "gKarts.Position.Suffix", px + pw, y + h * .54 + ph * .348, positionCol, TEXT_ALIGN_LEFT, TEXT_ALIGN_BOTTOM)
 
     draw.SimpleText("LAP 1/3", "gKarts.Position.Lap", x + w - self:ScreenScale(20), y + h / 2, colors.PrimaryText, TEXT_ALIGN_RIGHT, TEXT_ALIGN_CENTER)
 end

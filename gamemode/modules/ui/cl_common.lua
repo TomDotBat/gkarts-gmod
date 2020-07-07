@@ -1,4 +1,15 @@
 
+local suffixes = {
+    "ST",
+    "ND",
+    "RD",
+    "TH"
+}
+
+function GM:GetSuffix(num)
+    return num > 4 and suffixes[4] or suffixes[num]
+end
+
 file.CreateDir("gkarts")
 function GM:GetImgur(imgurID, callback)
     if file.Exists("gkarts/" .. imgurID .. ".png", "DATA") then
