@@ -38,4 +38,3 @@ GKarts = {}
 team.SetUp(1, "drivers", Color(255, 255, 255))
 
 GM:LoadDirectory(GM.FolderName .. "/gamemode/modules")
-
