@@ -36,8 +36,8 @@ function PANEL:PerformLayout(w, h)
     self.Avatar:SetSize(avatarSize, avatarSize)
 end
 
-GM:DefineFont("Scoreboard.Name", 26, true)
-GM:DefineFont("Scoreboard.Position", 38, true)
+GM:DefineScaledFont("Scoreboard.Name", 26, true)
+GM:DefineScaledFont("Scoreboard.Position", 38, true)
 
 function PANEL:Paint(w, h)
     if not self.Player then return end
