@@ -6,7 +6,7 @@ include("shared.lua")
 
 
 function GM:PlayerSpawn(ply)
-    
+
 end
 
 local data =  {
@@ -36,5 +36,9 @@ local data =  {
 }
 list.Set( "Vehicles", "gokart", data)
 
-
-concommand.Add("Spawn")
+concommand.Add("asd", function(ply)
+    local ent = ents.Create("gkarts_powerup")
+    print(ent)
+    ent:SetPos(ply:GetPos())
+    ent:Spawn()
+end)
