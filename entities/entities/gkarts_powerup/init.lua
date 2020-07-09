@@ -13,4 +13,18 @@ function ENT:Initialize()
     if IsValid(phys) then
         phys:Wake()
     end
+
+    self:SetModelScale(.7)
+
+    self.InitialPos = self:GetPos()
+    self.InitialAngs = self:GetAngles()
+end
+
+function ENT:Think()
+    self:NextThink(CurTime())
+
+    self:SetPos(self.InitialPos + Vector(0, 0, math.sin(CurTime() * 2) * 4))
+    self:SetAngles(self.InitialAngs + Angle(0, CurTime() * 100, 0))
+
+    return true
 end
