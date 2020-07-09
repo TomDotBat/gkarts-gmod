@@ -10,10 +10,9 @@ function GM:PlayerSpawn(ply)
 end
 
 local data =  {
-	Name = "Go-Kart",
-	Model = "models/sligwolf/gokart/sw_gokart.mdl",
-	Class = "prop_gokart",
-	Category = "gokart",
+    Name = "Go-Kart",
+    Class = "prop_gokart",
+    Category = "gokart",
     Author = "z",
     Information = "Go-Kart made by SligWolf",
     Model = "models/sligwolf/gokart/sw_gokart.mdl",
