@@ -1,0 +1,5 @@
+"VertexLitGeneric"
+{
+    "$basetexture" "ns/karts/questionbox/question_normal"
+    "$surfaceprop" "concrete"
+}
