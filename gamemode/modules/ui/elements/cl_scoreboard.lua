@@ -2,8 +2,7 @@
 local PANEL = {}
 
 function PANEL:Init()
-    self:SetPos(GAMEMODE.Padding, 0)
-    self:SetSize(GAMEMODE:ScreenScale(280), ScrH() - GAMEMODE:ScreenScale(180))
+    self:Position()
 
     self.CreateTime = CurTime()
     self.Players = {}
@@ -41,6 +40,15 @@ function PANEL:PerformLayout(w, h)
     for k,v in ipairs(self.Players) do
         v:SetSize(w, playerH)
     end
+end
+
+function PANEL:Position()
+    self:SetPos(GAMEMODE.Padding, 0)
+    self:SetSize(GAMEMODE:ScreenScale(280), ScrH() - GAMEMODE:ScreenScale(180))
+end
+
+function PANEL:OnScreenSizeChanged()
+    self:Position()
 end
 
 GM:DefineScaledFont("Scoreboard.Hint", 24)
