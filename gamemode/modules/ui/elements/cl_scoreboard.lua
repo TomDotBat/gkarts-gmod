@@ -22,14 +22,14 @@ function PANEL:AddPlayer(ply)
     pnl:SetPos(0, self:GetPlayerY(1))
 
     pnl.OnRemove = function(s)
-        table.RemoveByValue(self.Players, s)
+        self.Players[ply] = nil
     end
 
-    self.Players[#self.Players + 1] = pnl
+    self.Players[ply] = pnl
 end
 
 function PANEL:ReorderPlayers()
-    for k,v in ipairs(self.Players) do
+    for k,v in pairs(self.Players) do
         v:MoveTo(0, self:GetPlayerY(v.Position), .8)
         v:SetZPos(-v.Position)
     end
@@ -37,7 +37,7 @@ end
 
 function PANEL:PerformLayout(w, h)
     local playerH = GAMEMODE:ScreenScale(50)
-    for k,v in ipairs(self.Players) do
+    for k,v in pairs(self.Players) do
         v:SetSize(w, playerH)
     end
 end
