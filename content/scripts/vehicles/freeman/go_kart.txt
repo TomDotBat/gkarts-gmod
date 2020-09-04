@@ -3,23 +3,25 @@
  "WheelsPerAxle" "2"
  "Body"
  {
- "CounterTorqueFactor" "0"
- "MassCenterOverride" "0 0 -4"
- "MassOverride" "100"
- "AddGravity" "1.4"
+ "CounterTorqueFactor" "0.9"
+ "MassCenterOverride" "0 -4 4"
+ "MassOverride" "1200"
+ "AddGravity" "0.6"
  "MaxAngularVelocity" "720"
  }
  "Engine"
  {
- "HorsePower" "2"
- "MaxRPM" "250"
- "MaxSpeed" "80"
- "MaxReverseSpeed" "10"
+ "HorsePower" "100"
+ "MaxRPM" "4700"
+ "MaxSpeed" "40"
+ "MaxReverseSpeed" "5"
  "AutobrakeSpeedGain" "1.1"
  "AutobrakeSpeedFactor" "3"
  "Autotransmission" "0"
  "AxleRatio" "4.56"
+ "Gear" "3.4"
  "Gear" "2.4"
+ "Gear" "1.5"
  "Gear" "1"
  "Gear" "0.84"
 
@@ -28,12 +30,12 @@
  }
  "Steering"
  {
- "DegreesSlow" "35"
- "DegreesFast" "30"
- "DegreesBoost" "15"
+ "DegreesSlow" "40"
+ "DegreesFast" "9"
+ "DegreesBoost" "11"
  "FastDampen" "80"
  "SteeringExponent" "0"
- "SlowCarSpeed" "6"
+ "SlowCarSpeed" "2"
  "FastCarSpeed" "40"
  "SlowSteeringRate" "2.5"
  "FastSteeringRate" "2"
@@ -46,7 +48,7 @@
  "BoostSteeringRestRateFactor" "1.7"
  "BoostSteeringRateFactor" "1.7"
 
- "PowerSlideAccel" "10"
+ "PowerSlideAccel" "180"
 
  "SkidAllowed" "1"
  "DustCloud" "1"
@@ -55,9 +57,9 @@
  {
  "Wheel"
  {
- "Radius" "7.8"
- "Mass" "30"
- "Inertia" "0.2"
+ "Radius" "8"
+ "Mass" "180"
+ "Inertia" "0.9"
  "Damping" "0"
  "RotDamping" "1"
  "Material" "jeeptire"
@@ -66,7 +68,7 @@
  }
  "Suspension"
  {
- "SpringConstant" "70"
+ "SpringConstant" "43"
  "SpringDamping" "0.5"
  "StabilizerConstant" "0"
  "SpringDampingCompression" "5"
@@ -79,9 +81,9 @@
  {
  "Wheel"
  {
- "Radius" "13"
- "Mass" "50"
- "Inertia" "0.2"
+ "Radius" "12"
+ "Mass" "180"
+ "Inertia" "0.9"
  "Damping" "0"
  "RotDamping" "1"
  "Material" "jeeptire"
@@ -90,7 +92,7 @@
  }
  "Suspension"
  {
- "SpringConstant" "100"
+ "SpringConstant" "49"
  "SpringDamping" "0.5"
  "StabilizerConstant" "0"
  "SpringDampingCompression" "5"
