@@ -1,13 +1,13 @@
 
-local suffixes = {
-    "ST",
-    "ND",
-    "RD",
-    "TH"
-}
+local suffixes = {"ST", "ND", "RD"}
 
 function GM:GetSuffix(num)
-    return num > 4 and suffixes[4] or suffixes[num]
+    num = num % 100
+    if num > 10 and num < 20 then
+        return "TH"
+    end
+
+    return suffixes[num % 10] or "TH"
 end
 
 file.CreateDir("gkarts")
