@@ -66,5 +66,6 @@ end
 
 function GM:PostPlayerDraw(ply)
     if not localPly then localPly = LocalPlayer() end
+    if ply == localPly then return end
     ply:DrawOverhead()
 end
