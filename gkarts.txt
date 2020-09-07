@@ -1,6 +1,6 @@
 "gkarts"
 {
-	"base"		"base"
+	"base"		"sandbox"
 	"title"		"gkarts"
 	"maps"		"^gk_"
 	"menusystem"	"1"
