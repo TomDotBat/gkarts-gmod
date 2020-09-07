@@ -26,11 +26,15 @@ function ENT:Use(ply)
 end
 
 function ENT:BuildSeat(driver)
+    if IsValid(self.Driver) and IsValid(self.Chair) then return end
+
     if not IsValid(self.Chair) then
         self.Chair = ents.Create("prop_vehicle_prisoner_pod")
         self.Chair:SetParent(self)
 
         self.Chair:SetModel("models/nova/airboat_seat.mdl")
+        self.Chair:SetNoDraw(true)
+
         self.Chair:SetMoveType(MOVETYPE_NONE)
         self.Chair:SetKeyValue("vehiclescript", "scripts/vehicles/prisoner_pod.txt")
         self.Chair:SetKeyValue("limitview","0")
@@ -53,9 +57,13 @@ function ENT:BuildSeat(driver)
     self.Chair:SetAngles(chairAngs)
 
     if not IsValid(driver) then return end
+    self.Driver = driver
     driver:EnterVehicle(self.Chair)
 end
 
 function ENT:DestroySeat()
-    if IsValid(self.Chair) then self.Chair:Remove() end
+    if IsValid(self.Chair) then
+        self.Chair:Remove()
+        self.Driver = nil
+    end
 end
