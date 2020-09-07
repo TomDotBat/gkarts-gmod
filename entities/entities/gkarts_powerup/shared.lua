@@ -1,7 +1,7 @@
 
 ENT.Type = "anim"
 ENT.Base = "base_anim"
-ENT.PrintName = "gKart Powerup"
+ENT.PrintName = "Power Up"
 ENT.Category = "gKarts"
 ENT.Author = "Tom.bat"
 ENT.Spawnable = true
