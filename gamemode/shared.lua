@@ -35,9 +35,9 @@ function GM:LoadDirectory(dir)
 end
 
 print("[G-Karts] Loading...")
-print("[G-Karts] GKarts is property of Magma Networks (Tom.bat and NoSharp)")
+print("[G-Karts] gKarts is property of Magma Networks (Tom.bat and NoSharp)")
 
-GKarts = {}
+gKarts = {}
 team.SetUp(1, "drivers", Color(255, 255, 255))
 
 GM:LoadDirectory(GM.FolderName .. "/gamemode/modules")
