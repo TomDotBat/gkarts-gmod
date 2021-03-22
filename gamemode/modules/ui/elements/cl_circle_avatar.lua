@@ -1,26 +1,28 @@
 
 local PANEL = {}
 
-AccessorFunc(PANEL, "MaskSize", "MaskSize", FORCE_NUMBER)
+AccessorFunc(PANEL, "nMaskSize", "MaskSize", FORCE_NUMBER)
 
 function PANEL:Init()
     self.Avatar = vgui.Create("AvatarImage", self)
     self.Avatar:SetPaintedManually(true)
 
     self.CirclePoly = {}
-    self:SetMaskSize(1)
+    self.nMaskSize = 1
 end
 
+local rad = math.rad
+local sin, cos = math.sin, math.cos
 function PANEL:PerformLayout(w, h)
     self.Avatar:SetSize(w, h)
 
-    self.CirclePoly = {}
-    local maskSize = self:GetMaskSize()
+    local centerX, centerY = w * .5, h * .5
+    local maskSize = self.nMaskSize
 
     local t = 0
     for i = 1, 360 do
-        t = math.rad(i * 720) / 720
-        self.CirclePoly[i] = {x = w / 2 + math.cos(t) * maskSize, y = h / 2 + math.sin(t) * maskSize}
+        t = rad(i * 720) / 720
+        self.CirclePoly[i] = {x = centerX + cos(t) * maskSize, y = centerY + sin(t) * maskSize}
     end
 end
 
@@ -32,38 +34,54 @@ function PANEL:SetSteamID(id, size)
     self.Avatar:SetSteamID(id, size)
 end
 
-local render = render
-local surface = surface
+local clearStencil = render.ClearStencil
+local setStencilEnable = render.SetStencilEnable
+local setStencilWriteMask = render.SetStencilWriteMask
+local setStencilTestMask = render.SetStencilTestMask
+local setStencilFailOperation = render.SetStencilFailOperation
+local setStencilPassOperation = render.SetStencilPassOperation
+local setStencilZFailOperation = render.SetStencilZFailOperation
+local setStencilCompareFunction = render.SetStencilCompareFunction
+local setStencilReferenceValue = render.SetStencilReferenceValue
+
+local setTexture = surface.SetTexture
+local setDrawColor = surface.SetDrawColor
+local drawPoly = surface.DrawPoly
+
+local stencilOperationReplace = STENCILOPERATION_REPLACE
+local stencilOperationZero = STENCILOPERATION_ZERO
+local stencilOperationNever = STENCILCOMPARISONFUNCTION_NEVER
+
 local whiteTexture = surface.GetTextureID("vgui/white")
 function PANEL:Paint(w, h)
-    render.ClearStencil()
-    render.SetStencilEnable(true)
+    clearStencil()
+    setStencilEnable(true)
 
-    render.SetStencilWriteMask(1)
-    render.SetStencilTestMask(1)
+    setStencilWriteMask(1)
+    setStencilTestMask(1)
 
-    render.SetStencilFailOperation(STENCILOPERATION_REPLACE)
-    render.SetStencilPassOperation(STENCILOPERATION_ZERO)
-    render.SetStencilZFailOperation(STENCILOPERATION_ZERO)
-    render.SetStencilCompareFunction(STENCILCOMPARISONFUNCTION_NEVER)
-    render.SetStencilReferenceValue(1)
+    setStencilFailOperation(stencilOperationReplace)
+    setStencilPassOperation(stencilOperationZero)
+    setStencilZFailOperation(stencilOperationZero)
+    setStencilCompareFunction(stencilOperationNever)
+    setStencilReferenceValue(1)
 
-    surface.SetTexture(whiteTexture)
-    surface.SetDrawColor(255, 255, 255, 255)
-    surface.DrawPoly(self.CirclePoly)
+    setTexture(whiteTexture)
+    setDrawColor(255, 255, 255, 255)
+    drawPoly(self.CirclePoly)
 
-    render.SetStencilFailOperation(STENCILOPERATION_ZERO)
-    render.SetStencilPassOperation(STENCILOPERATION_REPLACE)
-    render.SetStencilZFailOperation(STENCILOPERATION_ZERO)
-    render.SetStencilCompareFunction(STENCILCOMPARISONFUNCTION_EQUAL)
-    render.SetStencilReferenceValue(1)
+    setStencilFailOperation(stencilOperationZero)
+    setStencilPassOperation(stencilOperationReplace)
+    setStencilZFailOperation(stencilOperationZero)
+    setStencilCompareFunction(stencilOperationNever)
+    setStencilReferenceValue(1)
 
     self.Avatar:SetPaintedManually(false)
     self.Avatar:PaintManual()
     self.Avatar:SetPaintedManually(true)
 
-    render.SetStencilEnable(false)
-    render.ClearStencil()
+    setStencilEnable(false)
+    clearStencil()
 end
 
 vgui.Register("gKarts.CircleAvatar", PANEL, "Panel")
