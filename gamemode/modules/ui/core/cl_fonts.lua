@@ -1,17 +1,18 @@
 
-GKarts.RegisteredFonts = GKarts.RegisteredFonts or {}
-local registeredFonts = GKarts.RegisteredFonts
+gKarts.RegisteredFonts = gKarts.RegisteredFonts or {}
+local registeredFonts = gKarts.RegisteredFonts
 
 do
-    GKarts.SharedFonts = GKarts.SharedFonts or {}
-    local sharedFonts = GKarts.SharedFonts
+    gKarts.SharedFonts = gKarts.SharedFonts or {}
+    local sharedFonts = gKarts.SharedFonts
 
-    function GKarts.RegisterFontUnscaled(name, font, size, weight)
+    function gKarts.RegisterFontUnscaled(name, size, bold, weight)
         weight = weight or 500
 
+        local font = bold and "Bebas Neue" or "Bebas Neue Bold"
         local identifier = font .. size .. ":" .. weight
 
-        local fontName = "GKarts:" .. identifier
+        local fontName = "gKarts:" .. identifier
         registeredFonts[name] = fontName
 
         if sharedFonts[identifier] then return end
@@ -27,47 +28,47 @@ do
 end
 
 do
-    GKarts.ScaledFonts = GKarts.ScaledFonts or {}
-    local scaledFonts = GKarts.ScaledFonts
+    gKarts.ScaledFonts = gKarts.ScaledFonts or {}
+    local scaledFonts = gKarts.ScaledFonts
 
-    function GKarts.RegisterFont(name, font, size, weight)
+    function gKarts.RegisterFont(name, font, size, weight)
         scaledFonts[name] = {
             font = font,
             size = size,
             weight = weight
         }
 
-        GKarts.RegisterFontUnscaled(name, font, GKarts.Scale(size), weight)
+        gKarts.RegisterFontUnscaled(name, font, gKarts.Scale(size), weight)
     end
 
-    hook.Add("OnScreenSizeChanged", "GKarts.ReRegisterFonts", function()
+    hook.Add("OnScreenSizeChanged", "gKarts.ReRegisterFonts", function()
         for k,v in pairs(scaledFonts) do
-            GKarts.RegisterFont(k, v.font, v.size, v.weight)
+            gKarts.RegisterFont(k, v.font, v.size, v.weight)
         end
     end)
 end
 
 do
     local setFont = surface.SetFont
-    local function setGKartsFont(font)
-        local GKartsFont = registeredFonts[font]
-        if GKartsFont then
-            setFont(GKartsFont)
+    local function setgKartsFont(font)
+        local gKartsFont = registeredFonts[font]
+        if gKartsFont then
+            setFont(gKartsFont)
             return
         end
 
         setFont(font)
     end
 
-    GKarts.SetFont = setGKartsFont
+    gKarts.SetFont = setgKartsFont
 
     local getTextSize = surface.GetTextSize
-    function GKarts.GetTextSize(text, font)
-        if font then setGKartsFont(font) end
+    function gKarts.GetTextSize(text, font)
+        if font then setgKartsFont(font) end
         return getTextSize(text)
     end
 
-    function GKarts.GetRealFont(font)
+    function gKarts.GetRealFont(font)
         return registeredFonts[font]
     end
 end
