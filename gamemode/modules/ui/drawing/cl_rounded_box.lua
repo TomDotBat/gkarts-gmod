@@ -53,9 +53,9 @@ do
         if bottomRight then drawTexturedRectUV(x + w - borderSize, y + h - borderSize, borderSize, borderSize, 1, 1, 0, 0)
         else drawRect(x + w - borderSize, y + h - borderSize, borderSize, borderSize) end
     end
-    RPGM.DrawRoundedBoxEx = drawRoundedBoxEx
+    gKarts.DrawRoundedBoxEx = drawRoundedBoxEx
 end
 
-function RPGM.DrawRoundedBox(borderSize, x, y, w, h, col)
+function gKarts.DrawRoundedBox(borderSize, x, y, w, h, col)
     return drawRoundedBoxEx(borderSize, x, y, w, h, col, true, true, true, true)
 end
