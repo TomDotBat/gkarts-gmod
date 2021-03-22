@@ -32,6 +32,20 @@ end
 
 do
     local drawSimpleText = gKarts.DrawSimpleText
+
+    function gKarts.SimpleTextOutlined(text, font, x, y, col, xAlign, yAlign, outlineWidth, outlineCol)
+        local steps = (outlineWidth * 2) / 3
+        if steps < 1 then steps = 1 end
+
+        for _x = -outlineWidth, outlineWidth, steps do
+            for _y = -outlineWidth, outlineWidth, steps do
+                drawSimpleText(text, font, x + _x, y + _y, outlineCol, xAlign, yAlign)
+            end
+        end
+
+        return drawSimpleText(text, font, x, y, colour, xAlign, yAlign)
+    end
+
     local gmatch = string.gmatch
     local find = string.find
     local max = math.max
