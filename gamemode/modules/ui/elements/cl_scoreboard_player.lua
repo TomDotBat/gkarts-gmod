@@ -1,55 +1,91 @@
 
 local PANEL = {}
 
-function PANEL:SetPlayer(ply)
-    if self.Player then return end
+AccessorFunc(PANEL, "pPlayer", "Player", FORCE_NUMBER)
+AccessorFunc(PANEL, "nPosition", "Position", FORCE_NUMBER)
 
-    self.Player = ply
-    self.Name = ply:Name()
-    self.Position = 1
+function PANEL:SetPosition(pos)
+    self.nPosition = pos
+    self.sPosition = "#" .. self.nPosition
+end
+
+function PANEL:SetPlayer(ply)
+    if self.pPlayer then return end
+
+    self.pPlayer = ply
+    self.sName = ply:Name()
+    self:SetPosition(1)
 
     self.Avatar = vgui.Create("gKarts.CircleAvatar", self)
 
-    self.NextThink = 0
+    self.nNextThink = 0
+
+    gameevent.Listen("player_disconnect")
+    hook.Add("player_disconnect", self, self.OnPlayerDisconnect)
+end
+
+function PANEL:OnPlayerDisconnect(data)
+    if not IsValid(self.pPlayer) then return end
+    if data.networkid ~= self.pPlayer:SteamID() then return end
+    self:Remove()
 end
 
 function PANEL:Think()
-    if CurTime() < self.NextThink then return end
-    self.NextThink = CurTime() + 3
+    local time = CurTime()
+    if time < self.nNextThink then return end
 
-    local newPosition = math.random(1, 8)
+    self.nNextThink = time + 3
 
-    if newPosition == self.Position then return end
-    self.Position = newPosition
+    local newPos = math.random(1, 8)
+    if newPos == self.nPosition then return end
+
+    self:SetPosition(newPos)
     self:GetParent():ReorderPlayers()
 end
 
 function PANEL:PerformLayout(w, h)
-    if not self.Player then return end
+    if not self.pPlayer then return end
 
     local avatarSize = h * .8
     local avatarPad = h * .1
 
-    self.Avatar:SetPlayer(self.Player, avatarSize)
+    self.Avatar:SetPlayer(self.pPlayer, avatarSize)
     self.Avatar:SetMaskSize(avatarSize * .49)
     self.Avatar:SetPos(avatarPad, avatarPad)
     self.Avatar:SetSize(avatarSize, avatarSize)
 end
 
-GM:DefineScaledFont("Scoreboard.Name", 26, true)
-GM:DefineScaledFont("Scoreboard.Position", 38, true)
+gKarts.RegisterFont("Scoreboard.Name", 26, true)
+gKarts.RegisterFont("Scoreboard.Position", 38, true)
 
-function PANEL:Paint(w, h)
-    if not self.Player then return end
-    if not IsValid(self.Player) then
-        self:Remove()
-        return
+gKarts.RegisterScaledConstant("Scoreboard.Rounding", 8)
+gKarts.RegisterScaledConstant("Scoreboard.PositionPadding", 10)
+
+do
+    local nameCol = gKarts.Colors.PrimaryText
+    local positionCols = gKarts.Colors.Positions
+    local defaultPositionCol = gKarts.Colors.DefaultPosition
+    local backgroundCol = gKarts.Colors.Background
+
+    local isValid = IsValid
+    local getScaledConstant = gKarts.GetScaledConstant
+
+    local textAlignLeft = TEXT_ALIGN_LEFT
+    local textAlignCenter = TEXT_ALIGN_CENTER
+    local textAlignRight = TEXT_ALIGN_RIGHT
+
+    function PANEL:Paint(w, h)
+        if not self.pPlayer then return end
+        if not isValid(self.pPlayer) then
+            self:Remove()
+            return
+        end
+
+        gKarts.DrawRoundedBox(getScaledConstant("Scoreboard.Rounding"), 0, 0, w, h, backgroundCol)
+
+        gKarts.DrawSimpleText(self.sName, "Scoreboard.Name", h, h * .5, nameCol, textAlignLeft, textAlignCenter)
+        gKarts.DrawSimpleText(self.sPosition, "Scoreboard.Position", w - getScaledConstant("Scoreboard.PositionPadding"), h * .5, positionCols[self.nPosition] or defaultPositionCol, textAlignRight, textAlignCenter)
     end
-
-    draw.RoundedBox(GAMEMODE:ScreenScale(8), 0, 0, w, h, GAMEMODE.Colors.PrimaryBackground)
-
-    draw.SimpleText(self.Name, "gKarts.Scoreboard.Name", h, h / 2, GAMEMODE.Colors.PrimaryText, TEXT_ALIGN_LEFT, TEXT_ALIGN_CENTER)
-    draw.SimpleText("#" .. self.Position, "gKarts.Scoreboard.Position", w - GAMEMODE:ScreenScale(10), h / 2, GAMEMODE.Colors.Positions[self.Position] or GAMEMODE.Colors.DefaultPosition, TEXT_ALIGN_RIGHT, TEXT_ALIGN_CENTER)
 end
 
 vgui.Register("gKarts.Scoreboard.Player", PANEL, "Panel")
