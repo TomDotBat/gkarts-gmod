@@ -30,17 +30,21 @@ function PANEL:OnPlayerDisconnect(data)
     self:Remove()
 end
 
-function PANEL:Think()
-    local time = CurTime()
-    if time < self.nNextThink then return end
+do
+    local curTime = CurTime
 
-    self.nNextThink = time + 3
+    function PANEL:Think()
+        local time = curTime()
+        if time < self.nNextThink then return end
 
-    local newPos = math.random(1, 8)
-    if newPos == self.nPosition then return end
+        self.nNextThink = time + 3
 
-    self:SetPosition(newPos)
-    self:GetParent():ReorderPlayers()
+        local newPos = math.random(1, 8)
+        if newPos == self.nPosition then return end
+
+        self:SetPosition(newPos)
+        self:GetParent():ReorderPlayers()
+    end
 end
 
 function PANEL:PerformLayout(w, h)
