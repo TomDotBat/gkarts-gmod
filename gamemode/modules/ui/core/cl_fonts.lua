@@ -9,8 +9,7 @@ do
     function gKarts.RegisterFontUnscaled(name, size, bold, weight)
         weight = weight or 500
 
-        local font = bold and "Bebas Neue" or "Bebas Neue Bold"
-        local identifier = font .. size .. ":" .. weight
+        local identifier = string.format("%i:%s:%i", size, tostring(bold), weight)
 
         local fontName = "gKarts:" .. identifier
         registeredFonts[name] = fontName
@@ -19,7 +18,7 @@ do
         sharedFonts[identifier] = true
 
         surface.CreateFont(fontName, {
-            font = font,
+            font = bold and "Bebas Neue" or "Bebas Neue Bold",
             size = size,
             weight = weight,
             antialias = true
@@ -31,19 +30,14 @@ do
     gKarts.ScaledFonts = gKarts.ScaledFonts or {}
     local scaledFonts = gKarts.ScaledFonts
 
-    function gKarts.RegisterFont(name, font, size, weight)
-        scaledFonts[name] = {
-            font = font,
-            size = size,
-            weight = weight
-        }
-
-        gKarts.RegisterFontUnscaled(name, font, gKarts.Scale(size), weight)
+    function gKarts.RegisterFont(name, size, bold, weight)
+        scaledFonts[name] = {bold, size, weight}
+        gKarts.RegisterFontUnscaled(name, gKarts.Scale(size), bold, weight)
     end
 
     hook.Add("OnScreenSizeChanged", "gKarts.ReRegisterFonts", function()
-        for k,v in pairs(scaledFonts) do
-            gKarts.RegisterFont(k, v.font, v.size, v.weight)
+        for _, font in pairs(scaledFonts) do
+            gKarts.RegisterFont(k, font[1], font[2], font[3])
         end
     end)
 end
