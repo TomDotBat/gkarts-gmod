@@ -2,7 +2,7 @@
 do
     local scrh = ScrH
     local max = math.max
-    function RPGM.Scale(value)
+    function gKarts.Scale(value)
         return max(value * (scrh() / 1080), 1)
     end
 end
@@ -10,18 +10,18 @@ end
 do
     local constants = {}
     local scaledConstants = {}
-    function RPGM.RegisterScaledConstant(varName, size)
+    function gKarts.RegisterScaledConstant(varName, size)
         constants[varName] = size
-        scaledConstants[varName] = RPGM.Scale(size)
+        scaledConstants[varName] = gKarts.Scale(size)
     end
 
-    function RPGM.GetScaledConstant(varName)
+    function gKarts.GetScaledConstant(varName)
         return scaledConstants[varName]
     end
 
-    hook.Add("OnScreenSizeChanged", "RPGM.StoreScaledConstants", function()
+    hook.Add("OnScreenSizeChanged", "gKarts.StoreScaledConstants", function()
         for varName, size in pairs(constants) do
-            scaledConstants[varName] = RPGM.Scale(size)
+            scaledConstants[varName] = gKarts.Scale(size)
         end
     end)
 end
