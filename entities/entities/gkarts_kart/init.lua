@@ -37,7 +37,7 @@ function ENT:BuildSeat(driver)
 
         self.Chair:SetMoveType(MOVETYPE_NONE)
         self.Chair:SetKeyValue("vehiclescript", "scripts/vehicles/prisoner_pod.txt")
-        self.Chair:SetKeyValue("limitview","0")
+        self.Chair:SetKeyValue("limitview", "0")
 
         self.Chair:Spawn()
         self.Chair:Activate()
