@@ -12,13 +12,15 @@ do
         localPly = LocalPlayer()
         if IsValid(localPly) then
             hook.Remove("Think", "gKarts.CacheLocalPlayer")
+
+            local callHook = hook.Call
+            function GM:HUDPaint()
+                callHook("gKarts.DrawHUD", self, scrW, scrH, localPly)
+            end
         end
     end)
 
-    local callHook = hook.Call
-    function GM:HUDPaint()
-        callHook("gKarts.DrawHUD", self, scrW, scrH, localPly)
-    end
+    function GM:HUDPaint() end
 end
 
 do
