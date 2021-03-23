@@ -43,7 +43,7 @@ do
             end
         end
 
-        return drawSimpleText(text, font, x, y, colour, xAlign, yAlign)
+        return drawSimpleText(text, font, x, y, col, xAlign, yAlign)
     end
 
     local gmatch = string.gmatch
