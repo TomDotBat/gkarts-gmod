@@ -2,18 +2,18 @@
 local materials = {}
 
 file.CreateDir("gkarts")
-function gKarts.GetImgur(id, callback, useproxy)
+function gKarts.GetImgur(id, callback, materialSettings, useproxy)
     if materials[id] then return callback(materials[id]) end
 
     if file.Exists("gkarts/" .. id .. ".png", "DATA") then
-        materials[id] = Material("../data/gkarts/" .. id .. ".png", "noclamp smooth")
+        materials[id] = Material("../data/gkarts/" .. id .. ".png", materialSettings or "noclamp smooth")
         return callback(materials[id])
     end
 
     http.Fetch(useproxy and "https://proxy.duckduckgo.com/iu/?u=https://i.imgur.com" or "https://i.imgur.com/" .. id .. ".png",
         function(body, len, headers, code)
             file.Write("gkarts/" .. id .. ".png", body)
-            materials[id] = Material("../data/gkarts/" .. id .. ".png", "noclamp smooth")
+            materials[id] = Material("../data/gkarts/" .. id .. ".png", materialSettings or "noclamp smooth")
             return callback(materials[id])
         end,
         function(error)
@@ -21,7 +21,7 @@ function gKarts.GetImgur(id, callback, useproxy)
                 materials[id] = Material("nil")
                 return callback(materials[id])
             end
-            return gKarts.GetImgur(id, callback, true)
+            return gKarts.GetImgur(id, callback, materialSettings, true)
         end
     )
 end
