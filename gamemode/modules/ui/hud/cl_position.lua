@@ -26,7 +26,7 @@ local textAlignBottom = TEXT_ALIGN_BOTTOM
 hook.Add("gKarts.DrawHUD", "gKarts.DrawPosition", function(scrW, scrH, localPly)
     if callHook("gKarts.ShouldDraw", nil, "Position", localPly) ~= nil then return end
 
-    local rounding = getScaledConstant("HUD.Position.Height")
+    local rounding = getScaledConstant("HUD.Position.Rounding")
     local width = getScaledConstant("HUD.Position.Width")
     local height = getScaledConstant("HUD.Position.Height")
     local screenPadding = getScaledConstant("Padding")
