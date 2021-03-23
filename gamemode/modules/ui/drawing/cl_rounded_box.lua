@@ -15,7 +15,7 @@ do
     local drawTexturedRectUV = surface.DrawTexturedRectUV
     local setTexture = surface.SetTexture
 
-    local function drawRoundedBoxEx(borderSize, x, y, w, h, col, topLeft, topRight, bottomLeft, bottomRight)
+    function gKarts.DrawRoundedBoxEx(borderSize, x, y, w, h, col, topLeft, topRight, bottomLeft, bottomRight)
         setDrawColor(col.r, col.g, col.b, col.a)
 
         if borderSize <= 0 then
@@ -53,9 +53,12 @@ do
         if bottomRight then drawTexturedRectUV(x + w - borderSize, y + h - borderSize, borderSize, borderSize, 1, 1, 0, 0)
         else drawRect(x + w - borderSize, y + h - borderSize, borderSize, borderSize) end
     end
-    gKarts.DrawRoundedBoxEx = drawRoundedBoxEx
 end
 
-function gKarts.DrawRoundedBox(borderSize, x, y, w, h, col)
-    return drawRoundedBoxEx(borderSize, x, y, w, h, col, true, true, true, true)
+do
+    local drawRoundedBoxEx = gKarts.DrawRoundedBoxEx
+
+    function gKarts.DrawRoundedBox(borderSize, x, y, w, h, col)
+        return drawRoundedBoxEx(borderSize, x, y, w, h, col, true, true, true, true)
+    end
 end
