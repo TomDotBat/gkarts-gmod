@@ -4,12 +4,16 @@ local PANEL = {}
 function PANEL:Init()
     self:Place()
 
-    self.nTimeCreated = CurTime()
+    self:ShowHint()
     self.pPlayers = {}
 
     for _, ply in ipairs(player.GetAll()) do
         self:AddPlayer(ply)
     end
+end
+
+function PANEL:ShowHint()
+    self.nTimeCreated = CurTime()
 end
 
 function PANEL:AddPlayer(ply)
