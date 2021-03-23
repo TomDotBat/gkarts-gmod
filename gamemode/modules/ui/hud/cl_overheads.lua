@@ -24,7 +24,7 @@ do
         pnl:PaintManual()
     end
 
-    hook.Add("PlayerDisconnected", "gKarts.CleanupDisconnectedAvatars", function(ply)
+    hook.Add("PlayerDisconnected", "gKarts.Overheads.CleanupDisconnectedAvatars", function(ply)
         avatars[ply] = nil
     end)
 end
@@ -86,13 +86,13 @@ function meta:DrawOverhead(eyeAngle)
     end3d2d()
 end
 
-hook.Add("Think", "gKarts.CacheLocalPlayer", function()
+hook.Add("Think", "gKarts.Overheads.CacheLocalPlayer", function()
     localPly = LocalPlayer()
     if IsValid(localPly) then
-        hook.Remove("Think", "gKarts.CacheLocalPlayer")
+        hook.Remove("Think", "gKarts.Overheads.CacheLocalPlayer")
 
         local eyeAngle = 0
-        hook.Add("PreRender", "gKarts.GetLocalPlayerEyeAngle", function()
+        hook.Add("PreRender", "gKarts.Overheads.GetLocalPlayerEyeAngle", function()
             eyeAngle = localPly:EyeAngles()[2]
         end)
 

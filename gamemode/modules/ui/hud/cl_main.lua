@@ -3,15 +3,15 @@ gKarts.RegisterScaledConstant("Padding", 30)
 
 do
     local scrW, scrH = ScrW(), ScrH()
-    hook.Add("OnScreenSizeChanged", "gKarts.CacheScreenResolution", function()
+    hook.Add("OnScreenSizeChanged", "gKarts.HUD.CacheScreenResolution", function()
         scrW, scrH = ScrW(), ScrH()
     end)
 
     local localPly = LocalPlayer()
-    hook.Add("Think", "gKarts.CacheLocalPlayer", function()
+    hook.Add("Think", "gKarts.HUD.CacheLocalPlayer", function()
         localPly = LocalPlayer()
         if IsValid(localPly) then
-            hook.Remove("Think", "gKarts.CacheLocalPlayer")
+            hook.Remove("Think", "gKarts.HUD.CacheLocalPlayer")
 
             local callHook = hook.Call
             function GAMEMODE:HUDPaint()
