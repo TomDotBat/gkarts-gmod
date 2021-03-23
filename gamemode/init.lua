@@ -4,7 +4,6 @@ AddCSLuaFile("shared.lua")
 
 include("shared.lua")
 
-
 function GM:PlayerSpawn(ply)
 
 end

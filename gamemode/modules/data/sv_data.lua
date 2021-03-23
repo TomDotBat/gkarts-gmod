@@ -1,9 +1,10 @@
-GKarts.db = {}
 
-function GKarts.db:init()
-    
+gKarts.Database = {}
+
+function gKarts.Database:Init()
+
 end
 
-function GKarts.db:query()
+function gKarts.Database:Query()
 
 end

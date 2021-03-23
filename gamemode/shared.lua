@@ -30,12 +30,12 @@ function GM:LoadDirectory(dir)
 
     for k, v in pairs(fol) do
         self:LoadDirectory(dir .. "/" .. v)
-        print("[G-Karts] Loaded folder: \"" .. dir .. "/" .. v .. "\"")
+        print("[gKarts] Loaded folder: \"" .. dir .. "/" .. v .. "\"")
     end
 end
 
-print("[G-Karts] Loading...")
-print("[G-Karts] gKarts is property of Magma Networks (Tom.bat and NoSharp)")
+print("[gKarts] Loading...")
+print("[gKarts] gKarts is property of Magma Networks (Tom.bat and NoSharp)")
 
 gKarts = {}
 team.SetUp(1, "drivers", Color(255, 255, 255))

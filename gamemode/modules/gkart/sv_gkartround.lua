@@ -1,12 +1,12 @@
 --[[
-    Starts a new round, lays out spawn positions etc.    
+    Starts a new round, lays out spawn positions etc.
 ]]--
 function GM:StartNewRound()
-    hook.Run("GKart.PreStartNewRound") -- Called when we start a new round.
+    hook.Run("gKarts.PreStartNewRound") -- Called when we start a new round.
 
     self:IncrementRound()
 
-    hook.Run("GKart.PostStartNewRound") -- Called after starting a new round.
+    hook.Run("gKarts.PostStartNewRound") -- Called after starting a new round.
 end
 
 --[[
