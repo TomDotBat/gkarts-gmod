@@ -73,6 +73,8 @@ do
 
     local isValid = IsValid
     local getScaledConstant = gKarts.GetScaledConstant
+    local drawRoundedBox = gKarts.DrawRoundedBox
+    local drawSimpleText = gKarts.DrawSimpleText
 
     local textAlignLeft = TEXT_ALIGN_LEFT
     local textAlignCenter = TEXT_ALIGN_CENTER
@@ -85,10 +87,10 @@ do
             return
         end
 
-        gKarts.DrawRoundedBox(getScaledConstant("Scoreboard.Rounding"), 0, 0, w, h, backgroundCol)
+        drawRoundedBox(getScaledConstant("Scoreboard.Rounding"), 0, 0, w, h, backgroundCol)
 
-        gKarts.DrawSimpleText(self.sName, "Scoreboard.Name", h, h * .5, nameCol, textAlignLeft, textAlignCenter)
-        gKarts.DrawSimpleText(self.sPosition, "Scoreboard.Position", w - getScaledConstant("Scoreboard.PositionPadding"), h * .5, positionCols[self.nPosition] or defaultPositionCol, textAlignRight, textAlignCenter)
+        drawSimpleText(self.sName, "Scoreboard.Name", h, h * .5, nameCol, textAlignLeft, textAlignCenter)
+        drawSimpleText(self.sPosition, "Scoreboard.Position", w - getScaledConstant("Scoreboard.PositionPadding"), h * .5, positionCols[self.nPosition] or defaultPositionCol, textAlignRight, textAlignCenter)
     end
 end
 
