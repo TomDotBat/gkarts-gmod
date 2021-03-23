@@ -70,6 +70,7 @@ do
     local hintTextCol = gKarts.Colors.PrimaryText
     local hintShadowTextCol = color_black
 
+    local getScaledConstant = gKarts.GetScaledConstant
     local getAlphaMultiplier = surface.GetAlphaMultiplier
     local setAlphaMultiplier = surface.SetAlphaMultiplier
     local drawSimpleTextOutlined = gKarts.SimpleTextOutlined
@@ -87,7 +88,7 @@ do
         local startAlpha = getAlphaMultiplier()
         setAlphaMultiplier(min(startAlpha, 1 - (curTime() - self.nTimeCreated - 2) / 1))
 
-        drawSimpleTextOutlined("Press TAB to toggle player list", "Scoreboard.Hint", w * .5, gKarts.GetScaledConstant("Padding") * .52, hintTextCol, textAlignCenter, textAlignCenter, 1, hintShadowTextCol)
+        drawSimpleTextOutlined("Press TAB to toggle player list", "Scoreboard.Hint", w * .5, getScaledConstant("Padding") * .52, hintTextCol, textAlignCenter, textAlignCenter, 1, hintShadowTextCol)
 
         setAlphaMultiplier(startAlpha)
     end
