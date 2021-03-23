@@ -49,12 +49,11 @@ function ENT:BuildSeat(driver)
     if not chairBone then return end
 
     local matrix = self:GetBoneMatrix(chairBone)
-    local chairPos = matrix:GetTranslation()
     local chairAngs = matrix:GetAngles()
 
     chairAngs:RotateAroundAxis(chairAngs:Up(), -90) --The bone angles are off on this axis but it works perfectly on vehicle scripts, no idea why
 
-    self.Chair:SetPos(self:WorldToLocal(chairPos) + Vector(0, 14, 0)) --The bone position also has the same problem
+    self.Chair:SetPos(self:WorldToLocal(matrix:GetTranslation()) + Vector(0, 14, 0)) --The bone position also has the same problem
     self.Chair:SetAngles(chairAngs)
 
     if not IsValid(driver) then return end
