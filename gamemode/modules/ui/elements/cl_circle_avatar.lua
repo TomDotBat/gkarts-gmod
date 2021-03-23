@@ -55,6 +55,7 @@ do
     local stencilOperationReplace = STENCILOPERATION_REPLACE
     local stencilOperationZero = STENCILOPERATION_ZERO
     local stencilOperationNever = STENCILCOMPARISONFUNCTION_NEVER
+    local stencilOperationEqual = STENCILCOMPARISONFUNCTION_EQUAL
 
     local whiteTexture = surface.GetTextureID("vgui/white")
 
@@ -78,7 +79,7 @@ do
         setStencilFailOperation(stencilOperationZero)
         setStencilPassOperation(stencilOperationReplace)
         setStencilZFailOperation(stencilOperationZero)
-        setStencilCompareFunction(stencilOperationNever)
+        setStencilCompareFunction(stencilOperationEqual)
         setStencilReferenceValue(1)
 
         self.Avatar:SetPaintedManually(false)
