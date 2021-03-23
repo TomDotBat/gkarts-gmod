@@ -39,11 +39,11 @@ hook.Add("gKarts.DrawHUD", "gKarts.DrawPosition", function(scrW, scrH, localPly)
         local position = 3
         local positionCol = positionCols[position] or defaultPositionCol
 
-        local posX = x + rounding
+        local numX = x + rounding
         local centerY = height * .54
 
-        local posW, posH = drawSimpleText(position, "Position.Number", posX, y + centerY, positionCol, nil, textAlignCenter)
-        drawSimpleText(getSuffix(position), "Position.Suffix", posX + posW, y + centerY + posH * .348, positionCol, nil, textAlignBottom)
+        local numW, numH = drawSimpleText(position, "Position.Number", numX, y + centerY, positionCol, nil, textAlignCenter)
+        drawSimpleText(getSuffix(position), "Position.Suffix", numX + numW, y + centerY + numH * .348, positionCol, nil, textAlignBottom)
     end
 
     drawSimpleText("LAP 1/3", "Position.Lap", x + width - rounding, y + height * .5, lapCol, textAlignRight, textAlignCenter)
