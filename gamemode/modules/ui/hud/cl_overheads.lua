@@ -96,7 +96,7 @@ hook.Add("Think", "gKarts.CacheLocalPlayer", function()
             eyeAngle = localPly:EyeAngles()[2]
         end)
 
-        function GM:PostPlayerDraw()
+        function GAMEMODE:PostPlayerDraw(ply)
             if ply == localPly then return end
             ply:DrawOverhead(eyeAngle)
         end

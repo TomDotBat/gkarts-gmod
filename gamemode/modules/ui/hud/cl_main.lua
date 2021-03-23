@@ -14,7 +14,7 @@ do
             hook.Remove("Think", "gKarts.CacheLocalPlayer")
 
             local callHook = hook.Call
-            function GM:HUDPaint()
+            function GAMEMODE:HUDPaint()
                 callHook("gKarts.DrawHUD", self, scrW, scrH, localPly)
             end
         end
