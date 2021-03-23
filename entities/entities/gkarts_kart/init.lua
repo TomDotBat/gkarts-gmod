@@ -15,7 +15,9 @@ function ENT:Initialize()
         phys:Wake()
     end
 
-    hook.Add("PlayerLeaveVehicle", self, self.DestroySeat)
+    hook.Add("PlayerLeaveVehicle", self, function(_, _, veh)
+        if veh == self then self:DestroySeat() end
+    end)
 
     self:BuildSeat()
 end
@@ -46,10 +48,9 @@ function ENT:BuildSeat(driver)
     local chairBone = self:LookupBone("gokart_characterplacement")
     if not chairBone then return end
 
-    local chairPos, chairAngs = self:GetBonePosition(chairBone)
-    if chairPos == self:GetPos() then
-        chairPos = self:GetBoneMatrix(chairBone):GetTranslation()
-    end
+    local matrix = self:GetBoneMatrix(chairBone)
+    local chairPos = matrix:GetTranslation()
+    local chairAngs = matrix:GetAngles()
 
     chairAngs:RotateAroundAxis(chairAngs:Up(), -90) --The bone angles are off on this axis but it works perfectly on vehicle scripts, no idea why
 
