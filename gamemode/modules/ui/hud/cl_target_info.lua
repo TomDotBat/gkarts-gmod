@@ -24,16 +24,16 @@ do
         pnl:PaintManual()
     end
 
-    hook.Add("PlayerDisconnected", "gKarts.Overheads.CleanupDisconnectedAvatars", function(ply)
+    hook.Add("PlayerDisconnected", "gKarts.TargetInfo.CleanupDisconnectedAvatars", function(ply)
         avatars[ply] = nil
     end)
 end
 
-gKarts.RegisterFontUnscaled("Overhead.Name", 100, true)
-gKarts.RegisterFontUnscaled("Overhead.Position", 180, true)
-gKarts.RegisterFontUnscaled("Overhead.Position.Suffix", 80, true)
-gKarts.RegisterFontUnscaled("Overhead.Lap.Title", 40, true)
-gKarts.RegisterFontUnscaled("Overhead.Lap.Time", 64, true)
+gKarts.RegisterFontUnscaled("TargetInfo.Name", 100, true)
+gKarts.RegisterFontUnscaled("TargetInfo.Position", 180, true)
+gKarts.RegisterFontUnscaled("TargetInfo.Position.Suffix", 80, true)
+gKarts.RegisterFontUnscaled("TargetInfo.Lap.Title", 40, true)
+gKarts.RegisterFontUnscaled("TargetInfo.Lap.Time", 64, true)
 
 
 local meta = FindMetaTable("Player")
@@ -57,48 +57,48 @@ local drawSimpleText = gKarts.DrawSimpleText
 local textAlignCenter = TEXT_ALIGN_CENTER
 local textAlignBottom = TEXT_ALIGN_BOTTOM
 
-function meta:DrawOverhead(eyeAngle)
-    if callHook("gKarts.ShouldDraw", nil, "Overhead", self) ~= nil then return end
+function meta:DrawTargetInfo(eyeAngle)
+    if callHook("gKarts.ShouldDraw", nil, "TargetInfo", self) ~= nil then return end
 
     local pos, ang = self:LocalToWorld(self:OBBCenter()), newAngle(0, eyeAngle + 270, 90)
     pos = pos + ang:Right() * -25
     pos = pos + ang:Forward() * 18
 
     local name = self:Name()
-    local boxW, boxH = 150 + getTextSize(name, "Overhead.Name") + 15, 300
+    local boxW, boxH = 150 + getTextSize(name, "TargetInfo.Name") + 15, 300
 
     start3d2d(pos, ang, .15)
         drawRoundedBox(24, 0, 0, boxW, boxH, backgroundCol)
 
         drawPlayerAvatar(self)
-        local nameW = drawSimpleText(name, "Overhead.Name", 150, 83, textCol, nil, textAlignCenter)
+        local nameW = drawSimpleText(name, "TargetInfo.Name", 150, 83, textCol, nil, textAlignCenter)
 
         local position = 3
         local positionCol = positionCols[position] or defaultPositionCol
 
-        local posW = drawSimpleText(position, "Overhead.Position", 20, boxH + 24, positionCol, nil, textAlignBottom)
-        drawSimpleText(getSuffix(position), "Overhead.Position.Suffix", 20 + posW, boxH + 0, positionCol, nil, textAlignBottom)
+        local posW = drawSimpleText(position, "TargetInfo.Position", 20, boxH + 24, positionCol, nil, textAlignBottom)
+        drawSimpleText(getSuffix(position), "TargetInfo.Position.Suffix", 20 + posW, boxH + 0, positionCol, nil, textAlignBottom)
 
         local lapTimeX = 150 + nameW * .5
 
-        local _, timeH = drawSimpleText("00:00:00", "Overhead.Lap.Time", lapTimeX, boxH - 5, textCol, textAlignCenter, textAlignBottom)
-        drawSimpleText("LAST LAP", "Overhead.Lap.Title", lapTimeX, boxH - 5 - timeH, textCol, textAlignCenter, textAlignBottom)
+        local _, timeH = drawSimpleText("00:00:00", "TargetInfo.Lap.Time", lapTimeX, boxH - 5, textCol, textAlignCenter, textAlignBottom)
+        drawSimpleText("LAST LAP", "TargetInfo.Lap.Title", lapTimeX, boxH - 5 - timeH, textCol, textAlignCenter, textAlignBottom)
     end3d2d()
 end
 
-hook.Add("Think", "gKarts.Overheads.CacheLocalPlayer", function()
+hook.Add("Think", "gKarts.TargetInfo.CacheLocalPlayer", function()
     localPly = LocalPlayer()
     if IsValid(localPly) then
-        hook.Remove("Think", "gKarts.Overheads.CacheLocalPlayer")
+        hook.Remove("Think", "gKarts.TargetInfo.CacheLocalPlayer")
 
         local eyeAngle = 0
-        hook.Add("PreRender", "gKarts.Overheads.GetLocalPlayerEyeAngle", function()
+        hook.Add("PreRender", "gKarts.TargetInfo.GetLocalPlayerEyeAngle", function()
             eyeAngle = localPly:EyeAngles()[2]
         end)
 
         function GAMEMODE:PostPlayerDraw(ply)
             if ply == localPly then return end
-            ply:DrawOverhead(eyeAngle)
+            ply:DrawTargetInfo(eyeAngle)
         end
     end
 end)
