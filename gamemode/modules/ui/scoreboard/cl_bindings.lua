@@ -1,6 +1,5 @@
 
 local toggled = false
-
 function GM:ScoreboardShow()
     toggled = not toggled
 
