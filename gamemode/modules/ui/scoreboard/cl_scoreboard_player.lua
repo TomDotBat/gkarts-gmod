@@ -66,7 +66,7 @@ gKarts.RegisterScaledConstant("Scoreboard.Rounding", 8)
 gKarts.RegisterScaledConstant("Scoreboard.PositionPadding", 10)
 
 do
-    local nameCol = gKarts.Colors.PrimaryText
+    local nameCol = gKarts.Colors.SecondaryText
     local positionCols = gKarts.Colors.Positions
     local defaultPositionCol = gKarts.Colors.DefaultPosition
     local backgroundCol = gKarts.Colors.Background
