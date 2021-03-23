@@ -8,13 +8,13 @@ function GM:ScoreboardShow()
     end
 
     if toggled then
-        self:FadeScoreboard(0, .3, function(scoreboard)
+        self:FadeScoreboard(0, .2, function(scoreboard)
             scoreboard:SetVisible(false)
         end)
     else
         self.Scoreboard:SetVisible(true)
         self.Scoreboard:ShowHint()
-        self:FadeScoreboard(255, .3)
+        self:FadeScoreboard(255, .2)
     end
 end
 
