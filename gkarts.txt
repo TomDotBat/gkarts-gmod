@@ -2,6 +2,7 @@
 {
 	"base"		"sandbox"
 	"title"		"gkarts"
+    "category"	"pvp"
 	"maps"		"^gk_"
 	"menusystem"	"1"
 }
