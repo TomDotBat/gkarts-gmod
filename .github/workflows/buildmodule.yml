@@ -1,0 +1,20 @@
+name: BuildModule
+on: [push]
+jobs:
+  build:
+    name: "build"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Setup premake
+        uses: @abel0b/setup-premake@v1
+      - run: sudo apt-get update && sudo apt-get install -y g++-9-multilib
+      - run: cd module && premake gmake
+       - uses: "marvinpinto/action-automatic-releases@latest"
+          with:
+            repo_token: "${{ secrets.GITHUB_TOKEN }}"
+            automatic_release_tag: "latest"
+            prerelease: false
+            title: "QuizAPI"
+            files: |
+              module/*
