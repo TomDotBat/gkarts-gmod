@@ -11,7 +11,8 @@ jobs:
       - run: wget https://github.com/premake/premake-core/releases/download/v5.0.0-alpha15/premake-5.0.0-alpha15-linux.tar.gz
       - run: tar -zxvf premake-5.0.0-alpha15-linux.tar.gz
       - run: ls -f 
-      - run: premake5 gmake
+      - run: chmod +x premake5
+      - run: ./premake5 gmake
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
