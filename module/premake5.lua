@@ -1,7 +1,6 @@
 PROJECT_GENERATOR_VERSION = 2
 
 include("garrysmod_common")
-
 CreateWorkspace({name = "gkarts", abi_compatible = true})
 	CreateProject({serverside = true, manual_files = true})
 		IncludeLuaShared()
