@@ -1,6 +1,6 @@
 PROJECT_GENERATOR_VERSION = 2
 
-printf("DIRECTORY:".. _MAIN_SCRIPT_DIR);
+printf("DIRECTORY:".. _MAIN_SCRIPT_DIR, "WORKING_DIRECTORY: " .. _WORKING_DIR);
 include("garrysmod_common")
 CreateWorkspace({name = "gkarts", abi_compatible = true})
 	CreateProject({serverside = true, manual_files = true})
