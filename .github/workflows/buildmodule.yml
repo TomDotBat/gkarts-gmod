@@ -16,7 +16,7 @@ jobs:
       - run: ls -f 
       - run: chmod +x premake5
       - run: ls -f 
-      - run: echo test %CD%
+      - run: pwd
       - run: ./premake5 gmake
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
