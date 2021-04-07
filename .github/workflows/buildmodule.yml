@@ -5,9 +5,10 @@ jobs:
     name: "build"
     runs-on: ubuntu-latest
     steps:
+    
       - uses: actions/checkout@master
-      - run: cd module
       - run: sudo apt-get update && sudo apt-get install -y g++-9-multilib
+      - working-directory: ./module
       - run: wget https://github.com/premake/premake-core/releases/download/v5.0.0-alpha15/premake-5.0.0-alpha15-linux.tar.gz
       - run: tar -zxvf premake-5.0.0-alpha15-linux.tar.gz
       - run: ls -f 
