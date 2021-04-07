@@ -15,8 +15,7 @@ jobs:
       - run: tar -zxvf premake-5.0.0-alpha15-linux.tar.gz
       - run: ls -f 
       - run: chmod +x premake5
-      - run: ./premake5 gmake --gmcommon=module/garrysmod_common
-        working-directory: /
+      - run: ./premake5 gmake --gmcommon=./garrysmod_common
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
