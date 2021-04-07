@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="ReleaseWithSymbols|Win32">
+      <Configuration>ReleaseWithSymbols</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{ADAA5C0F-1960-D504-A254-CFDB0E09CC08}</ProjectGuid>
+    <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>gmsv_gkarts</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseWithSymbols|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='ReleaseWithSymbols|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseWithSymbols|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>x86\ReleaseWithSymbols\</OutDir>
+    <IntDir>x86\ReleaseWithSymbols\intermediate\gmsv_gkarts\</IntDir>
+    <TargetName>gmsv_gkarts_win32</TargetName>
+    <TargetExt>.dll</TargetExt>
+    <IncludePath>..\..\..\garrysmod_common\include;..\..\..\garrysmod_common\helpers\include;..\..\..\garrysmod_common\helpers_extended\include;..\..\..\garrysmod_common\sourcesdk-minimal\common;..\..\..\garrysmod_common\sourcesdk-minimal\game\shared;..\..\..\garrysmod_common\sourcesdk-minimal\public;..\..\..\garrysmod_common\sourcesdk-minimal\game\server;..\..\..\garrysmod_common\sourcesdk-minimal\public\tier0;..\..\..\garrysmod_common\sourcesdk-minimal\public\tier1;..\..\..\garrysmod_common\scanning\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>x86\Release\</OutDir>
+    <IntDir>x86\Release\intermediate\gmsv_gkarts\</IntDir>
+    <TargetName>gmsv_gkarts_win32</TargetName>
+    <TargetExt>.dll</TargetExt>
+    <IncludePath>..\..\..\garrysmod_common\include;..\..\..\garrysmod_common\helpers\include;..\..\..\garrysmod_common\helpers_extended\include;..\..\..\garrysmod_common\sourcesdk-minimal\common;..\..\..\garrysmod_common\sourcesdk-minimal\game\shared;..\..\..\garrysmod_common\sourcesdk-minimal\public;..\..\..\garrysmod_common\sourcesdk-minimal\game\server;..\..\..\garrysmod_common\sourcesdk-minimal\public\tier0;..\..\..\garrysmod_common\sourcesdk-minimal\public\tier1;..\..\..\garrysmod_common\scanning\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseWithSymbols|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <DisableSpecificWarnings>4324;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <PreprocessorDefinitions>NDEBUG;_CRT_NONSTDC_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;STRICT;GMMODULE;GKARTS_SERVER;IS_SERVERSIDE=true;GMOD_ALLOW_OLD_TYPES;GMOD_ALLOW_LIGHTUSERDATA;GAME_DLL;RAD_TELEMETRY_DISABLED;GMOD_USE_SOURCESDK;WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>tier0.lib;vstdlib.lib;ws2_32.lib;rpcrt4.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\garrysmod_common\sourcesdk-minimal\lib\public;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ImportLibrary>x86\ReleaseWithSymbols\gmsv_gkarts_win32.lib</ImportLibrary>
+      <AdditionalOptions>/SAFESEH:NO %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <DisableSpecificWarnings>4324;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <PreprocessorDefinitions>NDEBUG;_CRT_NONSTDC_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;STRICT;GMMODULE;GKARTS_SERVER;IS_SERVERSIDE=true;GMOD_ALLOW_OLD_TYPES;GMOD_ALLOW_LIGHTUSERDATA;GAME_DLL;RAD_TELEMETRY_DISABLED;GMOD_USE_SOURCESDK;WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\..\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>tier0.lib;vstdlib.lib;ws2_32.lib;rpcrt4.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\garrysmod_common\sourcesdk-minimal\lib\public;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ImportLibrary>x86\Release\gmsv_gkarts_win32.lib</ImportLibrary>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\garrysmod_common\source\ABICompatibility.cpp" />
+    <ClCompile Include="..\..\..\source\main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\garrysmod_common\projects\windows\vs2019\lua_shared.vcxproj">
+      <Project>{5D4BA350-4903-E59D-B20A-BEF99EE17F8E}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\garrysmod_common\projects\windows\vs2019\helpers_extended.vcxproj">
+      <Project>{E8EAB4F6-D4E3-D348-FD15-B9CDE96DB354}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\garrysmod_common\projects\windows\vs2019\helpers.vcxproj">
+      <Project>{F8D0E23C-64B0-61D8-6DC8-ECAED926C839}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\garrysmod_common\sourcesdk-minimal\projects\windows\vs2019\tier1.vcxproj">
+      <Project>{EA6A6D10-567F-95C1-1F01-39218BD491F2}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\garrysmod_common\scanning\projects\windows\vs2019\scanning.vcxproj">
+      <Project>{1675544C-0242-AF57-2B5B-9DFF1787E4E5}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
