@@ -17,10 +17,6 @@ function _R.Player:GetKart()
     return gKarts.Karts[self]
 end
 
-function gKarts.GetKart(ply)
-    return gKarts.Karts[ply]
-end
-
 function gKarts.CreateKart(ply)
     if IsValid(gKarts.Karts[ply]) then return gKarts.Karts[ply] end
 
