@@ -10,6 +10,9 @@ AccessorFunc(kart, "nSpeed", "Speed")
 AccessorFunc(kart, "nThrottle", "Throttle")
 AccessorFunc(kart, "nSteering", "Steering")
 
+AccessorFunc(kart, "nTargetThrottle", "TargetThrottle")
+AccessorFunc(kart, "nTargetSteering", "TargetSteering")
+
 _R["gKart"] = kart
 
 
