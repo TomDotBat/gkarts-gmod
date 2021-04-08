@@ -16,3 +16,5 @@ concommand.Add("asd", function(ply)
     ent:Activate()
     ent:Spawn()
 end)
+
+util.PrecacheModel("models/freeman/vehicles/electric_go-kart.mdl")
