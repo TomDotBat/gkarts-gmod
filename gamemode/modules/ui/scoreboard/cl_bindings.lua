@@ -41,6 +41,4 @@ function GM:FadeScoreboard(targetAlpha, time, callback)
     end)
 end
 
-GAMEMODE.Scoreboard:Remove()
-
 function GM:ScoreboardHide() end
