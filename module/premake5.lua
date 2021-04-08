@@ -1,14 +1,8 @@
 PROJECT_GENERATOR_VERSION = 2
 
-newoption({
-	trigger = "gmcommon",
-	description = "Sets the path to the garrysmod_common (https://github.com/danielga/garrysmod_common) directory",
-	value = "path to garrysmod_common directory"
-})
-
-include(assert(_OPTIONS.gmcommon or os.getenv("GARRYSMOD_COMMON"),
-	"you didn't provide a path to your garrysmod_common (https://github.com/danielga/garrysmod_common) directory"))
-
+printf("DIRECTORY:".. _MAIN_SCRIPT_DIR);
+printf( "WORKING_DIRECTORY: " .. _WORKING_DIR)
+include("../module/garrysmod_common")
 CreateWorkspace({name = "gkarts", abi_compatible = true})
 	CreateProject({serverside = true, manual_files = true})
 		IncludeLuaShared()
@@ -22,5 +16,4 @@ CreateWorkspace({name = "gkarts", abi_compatible = true})
 		files({
 			"source/**.cpp",
             "source/**.h",
-            
 		})
