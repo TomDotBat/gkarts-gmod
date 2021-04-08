@@ -21,6 +21,7 @@ local drawRoundedBoxEx = gKarts.DrawRoundedBoxEx
 local textAlignRight = TEXT_ALIGN_RIGHT
 
 hook.Add("gKarts.DrawHUD", "gKarts.HUD.DrawTimer", function(scrW, scrH, localPly)
+    if true then return end
     if callHook("gKarts.ShouldDraw", nil, "Timer", localPly) ~= nil then return end
 
     local rounding = getScaledConstant("HUD.Timer.Rounding")

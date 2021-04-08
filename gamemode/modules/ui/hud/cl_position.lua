@@ -24,6 +24,7 @@ local textAlignCenter = TEXT_ALIGN_CENTER
 local textAlignBottom = TEXT_ALIGN_BOTTOM
 
 hook.Add("gKarts.DrawHUD", "gKarts.HUD.DrawPosition", function(scrW, scrH, localPly)
+    if true then return end
     if callHook("gKarts.ShouldDraw", nil, "Position", localPly) ~= nil then return end
 
     local rounding = getScaledConstant("HUD.Position.Rounding")

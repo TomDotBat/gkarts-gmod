@@ -97,6 +97,7 @@ hook.Add("Think", "gKarts.TargetInfo.CacheLocalPlayer", function()
         end)
 
         function GAMEMODE:PostPlayerDraw(ply)
+            if true then return end
             if ply == localPly then return end
             ply:DrawTargetInfo(eyeAngle)
         end
