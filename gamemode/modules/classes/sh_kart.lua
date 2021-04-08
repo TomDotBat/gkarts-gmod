@@ -6,6 +6,10 @@ kart.__index = kart
 
 AccessorFunc(kart, "pDriver", "Driver")
 
+AccessorFunc(kart, "nSpeed", "Speed")
+AccessorFunc(kart, "nThrottle", "Throttle")
+AccessorFunc(kart, "nSteering", "Steering")
+
 _R["gKart"] = kart
 
 
