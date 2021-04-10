@@ -6,13 +6,6 @@ kart.__index = kart
 
 AccessorFunc(kart, "pDriver", "Driver")
 
-AccessorFunc(kart, "nSpeed", "Speed", FORCE_NUMBER)
-AccessorFunc(kart, "nThrottle", "Throttle", FORCE_NUMBER)
-AccessorFunc(kart, "nSteering", "Steering", FORCE_NUMBER)
-
-AccessorFunc(kart, "nTargetThrottle", "TargetThrottle", FORCE_NUMBER)
-AccessorFunc(kart, "nTargetSteering", "TargetSteering", FORCE_NUMBER)
-
 _R["gKart"] = kart
 
 
@@ -32,14 +25,6 @@ function gKarts.CreateKart(ply)
     for key, value in pairs(kart) do
         ent[key] = value
     end
-
-    ent:SetSpeed(0)
-
-    ent:SetThrottle(0)
-    ent:SetSteering(0)
-
-    ent:SetTargetThrottle(0)
-    ent:SetTargetSteering(0)
 
     ent:SetDriver(ply)
 
