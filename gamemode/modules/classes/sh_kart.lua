@@ -6,6 +6,11 @@ kart.__index = kart
 
 AccessorFunc(kart, "pDriver", "Driver")
 
+function kart:SafeRemove()
+    hook.Run("gKarts.KartRemoved", self)
+    SafeRemoveEntity(self)
+end
+
 _R["gKart"] = kart
 
 
