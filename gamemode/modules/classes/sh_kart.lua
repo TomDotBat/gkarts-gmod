@@ -13,7 +13,7 @@ do
         local boneId = boneIdCache[name]
         if boneId then return boneId end
 
-        boneId = self:LookupBone(wheelSettings.bone)
+        boneId = self:LookupBone(wheelSettings.bone) or -1
         boneIdCache[name] = boneId
 
         return boneId
