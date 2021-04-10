@@ -33,12 +33,22 @@ function gKarts.CreateKart(ply)
         ent[key] = value
     end
 
+    ent:SetSpeed(0)
+
+    ent:SetThrottle(0)
+    ent:SetSteering(0)
+
+    ent:SetTargetThrottle(0)
+    ent:SetTargetSteering(0)
+
     ent:SetDriver(ply)
-    ent:Spawn()
+
+    local isLocalKart = ply == LocalPlayer()
+    hook.Run("gKarts.KartCreated", ent, ply, isLocalKart)
 
     gKarts.Karts[ply] = ent
 
-    if CLIENT and ply == LocalPlayer() then
+    if isLocalKart then
         gKarts.LocalKart = ent
     end
 
