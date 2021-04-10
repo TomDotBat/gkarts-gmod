@@ -6,6 +6,20 @@ kart.__index = kart
 
 AccessorFunc(kart, "pDriver", "Driver")
 
+do
+    local boneIdCache = {}
+
+    function kart:GetCachedBoneId(name)
+        local boneId = boneIdCache[name]
+        if boneId then return boneId end
+
+        boneId = self:LookupBone(wheelSettings.bone)
+        boneIdCache[name] = boneId
+
+        return boneId
+    end
+end
+
 function kart:SafeRemove()
     hook.Run("gKarts.KartRemoved", self)
     SafeRemoveEntity(self)
