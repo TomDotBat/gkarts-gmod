@@ -1,6 +1,0 @@
-[submodule "module/sourcesdk"]
-	path = module/sourcesdk
-	url = https://github.com/danielga/sourcesdk-minimal
-[submodule "module/garrysmod_common"]
-	path = module/garrysmod_common
-	url = https://github.com/danielga/garrysmod_common.git
