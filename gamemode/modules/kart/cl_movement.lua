@@ -7,7 +7,6 @@ hook.Add("gKarts.KartCreated", "gKarts.MovementInput", function(kart, driver, is
         kart:SetTargetSteering(mv:GetSideSpeed() / 10000)
 
         kart:MovementThink()
-        kart:AnimationThink()
     end)
 end)
 
