@@ -2,7 +2,7 @@
 hook.Add("gKarts.KartCreated", "gKarts.MovementInput", function(kart, driver, isLocal)
     if not isLocal then return end
 
-    hook.Add("Move", kart, function(_,  _, mv )
+    hook.Add("Move", kart, function(_,  _, mv)
         kart:SetTargetThrottle(mv:GetForwardSpeed() / 10000)
         kart:SetTargetSteering(mv:GetSideSpeed() / 10000)
 
