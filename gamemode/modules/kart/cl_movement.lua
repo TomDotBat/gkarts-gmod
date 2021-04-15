@@ -6,6 +6,7 @@ hook.Add("gKarts.KartCreated", "gKarts.MovementInput", function(kart, driver, is
         kart:SetTargetThrottle(mv:GetForwardSpeed() / 10000)
         kart:SetTargetSteering(mv:GetSideSpeed() / 10000)
 
+        kart:MovementThink()
         kart:AnimationThink()
     end)
 end)
@@ -50,19 +51,10 @@ do
         local prog = frameTime() * 4
         self.nThrottle = lerp(prog, self.nThrottle, self.nTargetThrottle)
         self.nSteering = lerp(prog, self.nSteering, self.nTargetSteering)
-
-        local physObj = self:GetPhysicsObject()
-
-        local velocity = physObj:GetVelocity()
-        velocity[3] = 0
-
-        physObj:SetVelocityInstantaneous(velocity)
-
-        --self:ApplyHoverForce()
     end
 end
 
-hook.Add("gKarts.KartCreated", "gKarts.MovementThink", function(kart)
+hook.Add("gKarts.KartCreated", "gKarts.MovementDefaults", function(kart)
     kart:SetSpeed(0)
 
     kart:SetThrottle(0)
@@ -70,6 +62,4 @@ hook.Add("gKarts.KartCreated", "gKarts.MovementThink", function(kart)
 
     kart:SetTargetThrottle(0)
     kart:SetTargetSteering(0)
-
-    hook.Add("Think", kart, kart.MovementThink)
 end)
