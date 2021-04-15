@@ -8,13 +8,4 @@ function GM:PlayerSpawn(ply)
 
 end
 
-concommand.Add("asd", function(ply)
-    local ent = ents.Create("gkarts_powerup")
-    print(ent)
-    ent:SetPos(ply:GetPos())
-    ent:SetAngles(angle_zero)
-    ent:Activate()
-    ent:Spawn()
-end)
-
 util.PrecacheModel("models/freeman/vehicles/electric_go-kart.mdl")
