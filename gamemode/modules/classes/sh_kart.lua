@@ -7,6 +7,25 @@ kart.__index = kart
 AccessorFunc(kart, "pDriver", "Driver")
 
 do
+    gKarts.KartThinkMethods = gKarts.KartThinkMethods or {}
+    local thinkMethods = gKarts.KartThinkMethods
+
+    function kart:Think()
+        for _, method in pairs(thinkMethods) do
+            method(self)
+        end
+    end
+
+    function gKarts.AddKartThinkMethod(id, method)
+        thinkMethods[id] = method
+    end
+
+    function gKarts.RemoveKartThinkMethod(id)
+        thinkMethods[id] = nil
+    end
+end
+
+do
     local boneIdCache = {}
 
     function kart:GetCachedBoneId(name)
@@ -49,6 +68,7 @@ function gKarts.CreateKart(ply)
 
     local isLocalKart = ply == LocalPlayer()
     hook.Run("gKarts.KartCreated", ent, ply, isLocalKart)
+    hook.Add("Think", kart, kart.Think)
 
     gKarts.Karts[ply] = ent
 
