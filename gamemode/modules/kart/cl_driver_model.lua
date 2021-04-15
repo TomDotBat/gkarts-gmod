@@ -19,8 +19,6 @@ function kart:SetUpDriverRagdoll(modelPath)
     local ragdoll = ClientsideRagdoll(modelPath)
     if not IsValid(ragdoll) then return end
 
-    print(ragdoll, modelPath)
-    print(self:GetPos())
     ragdoll:SetPos(self:GetPos())
     --ragdoll:SetParent(self)
     ragdoll:SetNoDraw(false)
