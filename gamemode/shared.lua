@@ -46,4 +46,7 @@ physData.MaxAngularVelocity = 10000
 
 physenv.SetPerformanceSettings(physData)
 
+if CLIENT then include(GM.FolderName .. "/gamemode/cl_constants.lua")
+else AddCSLuaFile(GM.FolderName .. "/gamemode/cl_constants.lua") end
+
 GM:LoadDirectory(GM.FolderName .. "/gamemode/modules")
