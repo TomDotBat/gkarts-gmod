@@ -6,7 +6,7 @@ if not IsValid(localPly) then return end
 
 if not IsValid(TestKart) then
     TestKart = gKarts.CreateKart(localPly)
-    TestKart:SetPos(localPly:GetEyeTrace().HitPos + Vector(0, 0, 80))
+    TestKart:SetPos(localPly:GetEyeTrace().HitPos + Vector(0, 0, 4))
     --gKarts.AttachCamera(TestKart)
 
     --timer.Simple(0, function()
