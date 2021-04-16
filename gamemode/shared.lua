@@ -40,11 +40,14 @@ print("[gKarts] gKarts is property of Magma Networks (Tom.bat and NoSharp)")
 gKarts = {}
 team.SetUp(1, "drivers", Color(255, 255, 255))
 
-local physData = physenv.GetPerformanceSettings()
-physData.MaxVelocity = 10000
-physData.MaxAngularVelocity = 10000
+hook.Add("InitPostEntity", "gKarts.AdjustPhysicsSettings", function()
+    local physData = physenv.GetPerformanceSettings()
+    physData.MaxVelocity = 10000
+    physData.MaxAngularVelocity = 10000
 
-physenv.SetPerformanceSettings(physData)
+    physenv.SetPerformanceSettings(physData)
+end)
+
 
 if CLIENT then include(GM.FolderName .. "/gamemode/cl_constants.lua")
 else AddCSLuaFile(GM.FolderName .. "/gamemode/cl_constants.lua") end
