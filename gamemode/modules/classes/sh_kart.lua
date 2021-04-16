@@ -68,7 +68,7 @@ function gKarts.CreateKart(ply)
 
     local isLocalKart = ply == LocalPlayer()
     hook.Run("gKarts.KartCreated", ent, ply, isLocalKart)
-    hook.Add("Think", kart, kart.Think)
+    hook.Add("Think", ent, ent.Think)
 
     gKarts.Karts[ply] = ent
 
