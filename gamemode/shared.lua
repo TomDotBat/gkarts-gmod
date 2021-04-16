@@ -40,4 +40,10 @@ print("[gKarts] gKarts is property of Magma Networks (Tom.bat and NoSharp)")
 gKarts = {}
 team.SetUp(1, "drivers", Color(255, 255, 255))
 
+local physData = physenv.GetPerformanceSettings()
+physData.MaxVelocity = 10000
+physData.MaxAngularVelocity = 10000
+
+physenv.SetPerformanceSettings(physData)
+
 GM:LoadDirectory(GM.FolderName .. "/gamemode/modules")
