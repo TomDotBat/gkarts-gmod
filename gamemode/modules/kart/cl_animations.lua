@@ -6,4 +6,4 @@ function kart:AnimationThink()
     self:SetPoseParameter(STEER_POSE, self.nSteering)
 end
 
-gKarts.AddKartThinkMethod("animation", kart.AnimationThink)
+gKarts.AddKartThinkMethod("animations", kart.AnimationThink)
