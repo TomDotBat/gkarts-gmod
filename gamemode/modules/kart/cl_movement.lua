@@ -24,8 +24,9 @@ do
     AccessorFunc(kart, "nTargetSteering", "TargetSteering", FORCE_NUMBER)
 
     function kart:MovementThink()
-        self.nThrottle = lerp(frameTime() * CONSTANTS.KART_THROTTLE_SENSITIVITY, self.nThrottle, self.nTargetThrottle)
-        self.nSteering = lerp(frameTime() * CONSTANTS.KART_STEERING_SENSITIVITY, self.nSteering, self.nTargetSteering)
+        local ft = frameTime()
+        self.nThrottle = lerp(ft * CONSTANTS.KART_THROTTLE_SENSITIVITY, self.nThrottle, self.nTargetThrottle)
+        self.nSteering = lerp(ft * CONSTANTS.KART_STEERING_SENSITIVITY, self.nSteering, self.nTargetSteering)
     end
 end
 
