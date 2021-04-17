@@ -20,9 +20,13 @@ do
         return self:GetGravityTrace().Hit and (self:GetUp() * GRAVITY_VECTOR) or GRAVITY_VECTOR
     end
 
-    function kart:GravityThink()
-        local physObj = self:GetPhysicsObject()
-        physObj:ApplyForceCenter(self:GetGravityVector() * physObj:GetMass() * FrameTime())
+    do
+        local frameTime = FrameTime
+
+        function kart:GravityThink()
+            local physObj = self:GetPhysicsObject()
+            physObj:ApplyForceCenter(self:GetGravityVector() * physObj:GetMass() * frameTime())
+        end
     end
 
     gKarts.AddKartThinkMethod("gravity", kart.GravityThink)
