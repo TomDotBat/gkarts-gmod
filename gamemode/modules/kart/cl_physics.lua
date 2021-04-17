@@ -2,6 +2,7 @@
 do
     local kart = debug.getregistry()["gKart"]
     local GRAVITY_VECTOR = physenv.GetGravity()
+    local GRAVITY = GRAVITY_VECTOR[3]
 
     do
         local traceLine = util.TraceLine
@@ -17,22 +18,22 @@ do
     end
 
     function kart:GetGravityVector(gravityTrace)
-        if not gravityTrace then gravityTrace = self:GetGravityTrace() end
-        return gravityTrace.Hit and (self:GetUp() * GRAVITY_VECTOR) or GRAVITY_VECTOR
+        return (gravityTrace or self:GetGravityTrace()).Hit
+            and (GRAVITY * self:GetUp())
+            or GRAVITY_VECTOR
     end
 
     function kart:GetGroundDistance(gravityTrace)
-        if not gravityTrace then gravityTrace = self:GetGravityTrace() end
-        return self:GetPos() - gravityTrace.HitPos
+        return self:GetPos() - (gravityTrace or self:GetGravityTrace()).HitPos
     end
 
     do
         local frameTime = FrameTime
 
         function kart:GetGravityForce(physObj, gravityTrace)
-            if not physObj then physObj = self:GetPhysicsObject() end
-            if not gravityTrace then gravityTrace = self:GetGravityTrace() end
-            return self:GetGravityVector(gravityTrace) * physObj:GetMass() * frameTime()
+            return self:GetGravityVector(gravityTrace or self:GetGravityTrace())
+                * (physObj or self:GetPhysicsObject()):GetMass()
+                * frameTime()
         end
     end
 
