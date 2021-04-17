@@ -24,7 +24,9 @@ do
     end
 
     function kart:GetGroundDistance(gravityTrace)
-        return self:GetPos() - (gravityTrace or self:GetGravityTrace()).HitPos
+        if not gravityTrace then gravityTrace = self:GetGravityTrace() end
+        if not gravityTrace.Hit then return end
+        return gravityTrace.HitPos[3] - self:GetPos()[3]
     end
 
     do
