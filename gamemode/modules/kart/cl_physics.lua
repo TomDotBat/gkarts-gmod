@@ -32,7 +32,7 @@ do
     gKarts.AddKartThinkMethod("gravity", kart.GravityThink)
 end
 
-hook.Add("gKarts.KartCreated", "gKarts.PhysicsSetup", function(kart, _, isLocal)
+hook.Add("gKarts.KartCreated", "gKarts.PhysicsSetup", function(kart)
     local physObj = kart:GetPhysicsObject()
     physObj:EnableGravity(false)
 end)
