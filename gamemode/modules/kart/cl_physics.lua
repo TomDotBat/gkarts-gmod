@@ -16,17 +16,30 @@ do
         end
     end
 
-    function kart:GetGravityVector()
-        return self:GetGravityTrace().Hit and (self:GetUp() * GRAVITY_VECTOR) or GRAVITY_VECTOR
+    function kart:GetGravityVector(gravityTrace)
+        if not gravityTrace then gravityTrace = self:GetGravityTrace() end
+        return gravityTrace.Hit and (self:GetUp() * GRAVITY_VECTOR) or GRAVITY_VECTOR
+    end
+
+    function kart:GetGroundDistance(gravityTrace)
+        if not gravityTrace then gravityTrace = self:GetGravityTrace() end
+        return self:GetPos() - gravityTrace.HitPos
     end
 
     do
         local frameTime = FrameTime
 
-        function kart:GravityThink()
-            local physObj = self:GetPhysicsObject()
-            physObj:ApplyForceCenter(self:GetGravityVector() * physObj:GetMass() * frameTime())
+        function kart:GetGravityForce(physObj, gravityTrace)
+            if not physObj then physObj = self:GetPhysicsObject() end
+            if not gravityTrace then gravityTrace = self:GetGravityTrace() end
+            return self:GetGravityVector(gravityTrace) * physObj:GetMass() * frameTime()
         end
+    end
+
+    function kart:GravityThink()
+        local gravityTrace = self:GetGravityTrace()
+        local physObj = self:GetPhysicsObject()
+        physObj:ApplyForceCenter(self:GetGravityForce(physObj, gravityTrace))
     end
 
     gKarts.AddKartThinkMethod("gravity", kart.GravityThink)
