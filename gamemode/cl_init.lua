@@ -13,7 +13,7 @@ if not IsValid(TestKart) then
     angles:RotateAroundAxis(angles:Right(), -90)
     TestKart:SetAngles(angles)
 
-    TestKart:SetPos(tr.HitPos + angles:Up() * 4)
+    TestKart:SetPos(tr.HitPos + angles:Up() * gKarts.Constants.KART_HOVER_HEIGHT)
 
     --gKarts.AttachCamera(TestKart)
 
