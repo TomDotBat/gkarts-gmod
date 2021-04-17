@@ -14,6 +14,7 @@ do
     local kart = debug.getregistry()["gKart"]
     local lerp = Lerp
     local frameTime = FrameTime
+    local CONSTANTS = gKarts.Constants
 
     AccessorFunc(kart, "nSpeed", "Speed", FORCE_NUMBER)
     AccessorFunc(kart, "nThrottle", "Throttle", FORCE_NUMBER)
@@ -23,9 +24,8 @@ do
     AccessorFunc(kart, "nTargetSteering", "TargetSteering", FORCE_NUMBER)
 
     function kart:MovementThink()
-        local prog = frameTime() * 4
-        self.nThrottle = lerp(prog, self.nThrottle, self.nTargetThrottle)
-        self.nSteering = lerp(prog, self.nSteering, self.nTargetSteering)
+        self.nThrottle = lerp(frameTime() * CONSTANTS.KART_THROTTLE_SENSITIVITY, self.nThrottle, self.nTargetThrottle)
+        self.nSteering = lerp(frameTime() * CONSTANTS.KART_STEERING_SENSITIVITY, self.nSteering, self.nTargetSteering)
     end
 end
 
