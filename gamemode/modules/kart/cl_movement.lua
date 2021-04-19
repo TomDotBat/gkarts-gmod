@@ -27,6 +27,13 @@ do
         local ft = frameTime()
         self.nThrottle = lerp(ft * CONSTANTS.KART_THROTTLE_SENSITIVITY, self.nThrottle, self.nTargetThrottle)
         self.nSteering = lerp(ft * CONSTANTS.KART_STEERING_SENSITIVITY, self.nSteering, self.nTargetSteering)
+
+        --debugoverlay.Sphere(self:LocalToWorld(CONSTANTS.KART_STEER_FORCE_ORIGIN), 4, 1, HSVToColor((CurTime() * 50) % 360, 1, 1), true)
+
+        local physObj = self:GetPhysicsObject()
+        physObj:ApplyForceCenter(self:GetRight() * -200000 * self.nThrottle * FrameTime())
+        physObj:ApplyTorqueCenter(self:GetUp() * -40000 * self.nSteering * FrameTime())
+        --physObj:ApplyForceCenter(self:GetForward() * 1000 * self.nSteering, self:LocalToWorld(CONSTANTS.KART_STEER_FORCE_ORIGIN))
     end
 end
 
